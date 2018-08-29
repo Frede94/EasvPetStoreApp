@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RootNamespace>Easv.PetStore.Infrastructure.Data</RootNamespace>
+    <AssemblyName>Easv.PetStore.Infrastructure.Data</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Easv.VideoApp.Core.Entity\Easv.PetStore.Core.Entity.csproj" />
+    <ProjectReference Include="..\Easv.VideoApp.Core\Easv.PetStore.Core.csproj" />
+  </ItemGroup>
+
+</Project>

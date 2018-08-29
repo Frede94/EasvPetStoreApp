@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Easv.PetStore.ConsoleApp", "Easv.VideoApp.Console\Easv.PetStore.ConsoleApp.csproj", "{1EFF4C3D-0697-41AF-AFE5-87593733474E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{CA3B91F5-F25E-424D-9D93-3B1B2AEB26BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{1EABA7D9-5C10-46E7-A6BB-7757CBFCAD23}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{3D399473-E862-42FD-AA1C-8D0C2CFE6A03}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Easv.PetStore.Core", "Easv.VideoApp.Core\Easv.PetStore.Core.csproj", "{48F9FD4A-C403-4F97-AE90-A88B5DF08835}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Easv.PetStore.Core.Entity", "Easv.VideoApp.Core.Entity\Easv.PetStore.Core.Entity.csproj", "{58F209CF-DE56-41BA-B079-E660392315CC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Easv.VideoApp.PetStore.Data", "Easv.VideoApp.Infrastructure.Data\Easv.VideoApp.PetStore.Data.csproj", "{857290F5-1313-491A-B488-76095DB3AF71}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1EFF4C3D-0697-41AF-AFE5-87593733474E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EFF4C3D-0697-41AF-AFE5-87593733474E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EFF4C3D-0697-41AF-AFE5-87593733474E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EFF4C3D-0697-41AF-AFE5-87593733474E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48F9FD4A-C403-4F97-AE90-A88B5DF08835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48F9FD4A-C403-4F97-AE90-A88B5DF08835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48F9FD4A-C403-4F97-AE90-A88B5DF08835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48F9FD4A-C403-4F97-AE90-A88B5DF08835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58F209CF-DE56-41BA-B079-E660392315CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58F209CF-DE56-41BA-B079-E660392315CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58F209CF-DE56-41BA-B079-E660392315CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58F209CF-DE56-41BA-B079-E660392315CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{857290F5-1313-491A-B488-76095DB3AF71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{857290F5-1313-491A-B488-76095DB3AF71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{857290F5-1313-491A-B488-76095DB3AF71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{857290F5-1313-491A-B488-76095DB3AF71}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1EFF4C3D-0697-41AF-AFE5-87593733474E} = {CA3B91F5-F25E-424D-9D93-3B1B2AEB26BD}
+		{48F9FD4A-C403-4F97-AE90-A88B5DF08835} = {3D399473-E862-42FD-AA1C-8D0C2CFE6A03}
+		{58F209CF-DE56-41BA-B079-E660392315CC} = {3D399473-E862-42FD-AA1C-8D0C2CFE6A03}
+		{857290F5-1313-491A-B488-76095DB3AF71} = {1EABA7D9-5C10-46E7-A6BB-7757CBFCAD23}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6590C4BC-4627-4C1B-A1A1-81DCD4877555}
+	EndGlobalSection
+EndGlobal

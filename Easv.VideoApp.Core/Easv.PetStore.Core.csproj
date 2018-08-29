@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Easv.PetStore.Core</AssemblyName>
+    <RootNamespace>Easv.PetStore.Core</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Easv.VideoApp.Core.Entity\Easv.PetStore.Core.Entity.csproj" />
+  </ItemGroup>
+
+</Project>
