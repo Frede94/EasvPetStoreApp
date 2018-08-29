@@ -52,6 +52,7 @@ namespace Easv.PetStore.ConsoleApp
                     case 2:
                         var searchType = PrintFintPetByType();
                         _petService.FindPetByType(searchType);
+                        
                         break;
                     case 3:
                         var name = AskQuestion("Name: ");
@@ -165,11 +166,12 @@ namespace Easv.PetStore.ConsoleApp
             {
                 Console.WriteLine("ID er altid et tal");
             }
+
             return id;
         }
         string PrintFintPetByType()
         {
-            Console.WriteLine("Skriv Navn på Pet ");
+            Console.WriteLine("Skriv type på Pet ");
             string name = Console.ReadLine();
             return name;
         }
