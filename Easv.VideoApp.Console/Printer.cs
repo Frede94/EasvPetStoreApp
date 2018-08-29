@@ -1,69 +1,32 @@
-﻿using Easv.PetStore.Core.DomainService;
+﻿using Easv.PetStore.Core.ApplicationService;
+using Easv.PetStore.Core.DomainService;
 using Easv.PetStore.Core.Entity;
 using Easv.PetStore.Infrastructure.Data.Repositories;
 using System;
+using System.Collections.Generic;
 
 namespace Easv.PetStore.ConsoleApp
 {
+    //hej
 
-    class Printer
+
+    public class Printer: IPrinter
     {
-        private IPetRepository petRepository;
+        private IPetService _petService;
 
-        public Printer()
+        public Printer(IPetService petService)
         {
-            
-
-            petRepository = new PetRepository();
+            _petService = petService;
             //Infrastructure.Data
             //Initialise Data - Seed Database
-            var pet1 = new Pet()
-            {
-                Name = "Pjuske",
-                Type = "Hund",
-                Birthdate = new DateTime (2018, 08, 08),
-                SoldDate = new DateTime(2019, 09, 09),
-                Color = "Brun",
-                PrevOwner = "Lars",
-                Price = 2000.00
-
-            };
-            petRepository.Create(pet1);
-            var pet2 = new Pet()
-            {
-                Name = "JohnBob",
-                Type = "Kat",
-                Birthdate = new DateTime(2018, 08, 08),
-                SoldDate = new DateTime(2019, 09, 09),
-                Color = "Hvid",
-                PrevOwner = "John",
-                Price = 150.00
-            };
-            petRepository.Create(pet2);
-            var pet3 = new Pet()
-            {
-                Name = "Ib",
-                Type = "Gås",
-                Birthdate = new DateTime(2018, 08, 08),
-                SoldDate = new DateTime(2019, 09, 09),
-                Color = "Grå",
-                PrevOwner = "Karl",
-                Price = 350.00
-            };
-            petRepository.Create(pet3);
-            var pet4 = new Pet()
-            {
-                Name = "Killer",
-                Type = "Hund",
-                Birthdate = new DateTime(2018, 08, 08),
-                SoldDate = new DateTime(2019, 09, 09),
-                Color = "Gul",
-                PrevOwner = "Jens",
-                Price = 5000.00
-            };
-            petRepository.Create(pet4);
-
+            StartData();
             //UI
+             
+        }
+
+        //UI
+        public void StartUI()
+        {
             string[] menuEnhender =
             {
                 "List af alle Pet",
@@ -83,19 +46,50 @@ namespace Easv.PetStore.ConsoleApp
                 switch (valg)
                 {
                     case 1:
-                        VisFilm();
+                        var pets = _petService.GetAllPets();                        
+                        ShowPets(pets);
                         break;
                     case 2:
-                        Console.WriteLine("Nope");
+                        var searchType = PrintFintPetByType();
+                        _petService.FindPetByType(searchType);
                         break;
                     case 3:
-                        TilføjFilm();                        
+                        var name = AskQuestion("Name: ");
+                        var type = AskQuestion("Type: ");
+                        var birthDate = AskQuestion("Birthdate: ");
+                        var soldDate = AskQuestion("Solddate: ");
+                        var color = AskQuestion("Color: ");
+                        var prevOwner = AskQuestion("Previous owner: ");
+                        var price = AskQuestion("Price: ");
+                        var pet = _petService.NewPet(name, type, Convert.ToDateTime(birthDate),
+                                            Convert.ToDateTime(soldDate), color,
+                                            prevOwner, Convert.ToDouble(price));
+                        _petService.CreatePet(pet);
                         break;
                     case 4:
-                        SletFilm();                        
+                        var iDForDelete = PrintFindPetById();
+                        _petService.DeletePet(iDForDelete);
                         break;
                     case 5:
-                        ÆndreFilm();
+                        var idForEdit = PrintFindPetById();
+                        var petToEdit = _petService.FindPetById(idForEdit);
+                        var newName = AskQuestion("Name: ");
+                        var newType = AskQuestion("Type: ");
+                        var newBirthDate = AskQuestion("Birthdate: ");
+                        var newSoldDate = AskQuestion("Solddate: ");
+                        var newColor = AskQuestion("Color: ");
+                        var newPrevOwner = AskQuestion("Previous owner: ");
+                        var newPrice = AskQuestion("Price: ");
+                        _petService.UpdatePet(new Pet() {
+                            Id = idForEdit,
+                            Name = newName,
+                            Type = newType,
+                            Birthdate = Convert.ToDateTime(newBirthDate),
+                            SoldDate = Convert.ToDateTime(newSoldDate),
+                            Color = newColor,
+                            PrevOwner = newPrevOwner,
+                            Price = Convert.ToDouble(newPrice)
+                        });
                         break;
                     case 6:
                         Console.WriteLine("Nope");
@@ -113,7 +107,57 @@ namespace Easv.PetStore.ConsoleApp
 
             Console.ReadLine();
         }
-        private Pet FindPetMedID()
+
+        private void StartData()
+        {
+            var pet1 = new Pet()
+            {
+                Name = "Pjuske",
+                Type = "Hund",
+                Birthdate = new DateTime(2018, 08, 08),
+                SoldDate = new DateTime(2019, 09, 09),
+                Color = "Brun",
+                PrevOwner = "Lars",
+                Price = 2000.00
+
+            };
+            _petService.CreatePet(pet1);
+            var pet2 = new Pet()
+            {
+                Name = "JohnBob",
+                Type = "Kat",
+                Birthdate = new DateTime(2018, 08, 08),
+                SoldDate = new DateTime(2019, 09, 09),
+                Color = "Hvid",
+                PrevOwner = "John",
+                Price = 150.00
+            };
+            _petService.CreatePet(pet2);
+            var pet3 = new Pet()
+            {
+                Name = "Ib",
+                Type = "Gås",
+                Birthdate = new DateTime(2018, 08, 08),
+                SoldDate = new DateTime(2019, 09, 09),
+                Color = "Grå",
+                PrevOwner = "Karl",
+                Price = 350.00
+            };
+            _petService.CreatePet(pet3);
+            var pet4 = new Pet()
+            {
+                Name = "Killer",
+                Type = "Hund",
+                Birthdate = new DateTime(2018, 08, 08),
+                SoldDate = new DateTime(2019, 09, 09),
+                Color = "Gul",
+                PrevOwner = "Jens",
+                Price = 5000.00
+            };
+            _petService.CreatePet(pet4);
+        }
+
+        int PrintFindPetById()
         {
             Console.WriteLine("Skriv id på Pet ");
             int id;
@@ -121,90 +165,33 @@ namespace Easv.PetStore.ConsoleApp
             {
                 Console.WriteLine("ID er altid et tal");
             }
-
-            return petRepository.ReadById(id);
-
+            return id;
+        }
+        string PrintFintPetByType()
+        {
+            Console.WriteLine("Skriv Navn på Pet ");
+            string name = Console.ReadLine();
+            return name;
         }
 
-        private void ÆndreFilm()
+        string AskQuestion(string question)
         {
-            var pet = FindPetMedID();
-
-            Console.WriteLine("Skriv Pets Navn");
-            pet.Name = Console.ReadLine();
-            Console.WriteLine("Skriv Pets Type");
-            pet.Type = Console.ReadLine();
-            //Console.WriteLine("Skriv Pets Birthdate");
-            //pet.Birthdate = Console.ReadLine();
-            //Console.WriteLine("Skriv Pets SoldDate");
-            //pet.SoldDate = Console.ReadLine();
-            Console.WriteLine("Skriv Pets Color");
-            pet.Color = Console.ReadLine();
-            Console.WriteLine("Skriv Pets PreviousOwner");
-            pet.PrevOwner = Console.ReadLine();
-            Console.WriteLine("Skriv Pets Price");
-            pet.Price = double.Parse(Console.ReadLine());
-
+            Console.WriteLine(question);
+            return Console.ReadLine();
         }
 
-        private void SletFilm()
+        private void ShowPets(List<Pet> pets)
         {
-            var videoFundet = FindPetMedID();
-
-            if (videoFundet != null)
-            {
-                petRepository.delete(videoFundet.Id);
-            }
-        }
-
-        private void TilføjFilm()
-        {
-            //UI            
-            Console.WriteLine("Skriv Pets Navn");
-            var name = Console.ReadLine();
-            Console.WriteLine("Skriv Pets Type");
-            var type = Console.ReadLine();
-            //Console.WriteLine("Skriv Pets Birthdate");
-            //var birthdate = Console.ReadLine();
-            //Console.WriteLine("Skriv Pets SoldDate");
-            //var soldDate = Console.ReadLine();
-            Console.WriteLine("Skriv Pets Color");
-            var color = Console.ReadLine();
-            Console.WriteLine("Skriv Pets PreviousOwner");
-            var prevOwner = Console.ReadLine();
-            Console.WriteLine("Skriv Pets Price");
-            var price = double.Parse(Console.ReadLine());            
-            
-            var vid = new Pet
-            {
-                Name = name,
-                Type = type,
-                //Birthdate = birthDate,
-                //SoldDate = soldDate,
-                Color = color,
-                PrevOwner = prevOwner,
-                Price = price
-            };
-            petRepository.Create(vid);
-        }
-
-        private void VisFilm()
-        {
-            Console.WriteLine("\nListe af film");
-                       
-            var pets = petRepository.ReadAll();
+            Console.WriteLine("\nListe af film");                                  
             foreach (var pet in pets)
             {
                 Console.WriteLine($"Id: {pet.Id} | Navn: {pet.Name} | Type: {pet.Type} " +
                     $"| Birthdate: {pet.Birthdate} | Solddate: {pet.SoldDate}" +
                     $" | Color: {pet.Color} | Previous Owner: {pet.PrevOwner} | Price: {pet.Price}");
-
             }
             Console.WriteLine("____________________________________________________________________________");
             Console.WriteLine("\n");
         }
-
-
         //UI
         public static int PetMenu(string[] menuEnhender)
         {

@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Easv.PetStore.ConsoleApp
 {
-    interface IPrinter
+    public interface IPrinter
     {
+        void StartUI();
     }
 }

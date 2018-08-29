@@ -8,7 +8,8 @@ namespace Easv.PetStore.Core.DomainService
         Pet Create(Pet pet);
 
         Pet ReadById(int id);
-        List<Pet> ReadAll();
+
+        IEnumerable<Pet> ReadAll();
 
         Pet Update(Pet petUpdate);
 

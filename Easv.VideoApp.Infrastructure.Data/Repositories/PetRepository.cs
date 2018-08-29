@@ -28,7 +28,7 @@ namespace Easv.PetStore.Infrastructure.Data.Repositories
             }
             return null;            
         }
-        public List<Pet> ReadAll()
+        public IEnumerable<Pet> ReadAll()
         {
             return _pets;
         }
