@@ -51,8 +51,13 @@ namespace Easv.PetStore.ConsoleApp
                         break;
                     case 2:
                         var searchType = PrintFintPetByType();
-                        _petService.FindPetByType(searchType);
-                        
+                        var result = _petService.FindPetByType(searchType);
+                        foreach (var searchPet in result)
+                        {
+                            Console.WriteLine($"Name: {searchPet.Name} | Type: {searchPet.Type} | Birthdate: {searchPet.Birthdate}" +
+                                $" | Solddate: {searchPet.SoldDate} | Color: {searchPet.Color} | Previous owner: {searchPet.PrevOwner}" +
+                                $" | Price: {searchPet.Price}");
+                        }
                         break;
                     case 3:
                         var name = AskQuestion("Name: ");
@@ -74,6 +79,7 @@ namespace Easv.PetStore.ConsoleApp
                     case 5:
                         var idForEdit = PrintFindPetById();
                         var petToEdit = _petService.FindPetById(idForEdit);
+                        Console.WriteLine(petToEdit.Name);
                         var newName = AskQuestion("Name: ");
                         var newType = AskQuestion("Type: ");
                         var newBirthDate = AskQuestion("Birthdate: ");
@@ -92,11 +98,18 @@ namespace Easv.PetStore.ConsoleApp
                             Price = Convert.ToDouble(newPrice)
                         });
                         break;
-                    case 6:
-                        Console.WriteLine("Nope");
+                    case 6:                        
+                        var sortResult = _petService.SortByPrice();
+                        foreach (var sortPet in sortResult)
+                        {
+                            Console.WriteLine($"Name: {sortPet.Name} | Type: {sortPet.Type} | Birthdate: {sortPet.Birthdate}" +
+                                $" | Solddate: {sortPet.SoldDate} | Color: {sortPet.Color} | Previous owner: {sortPet.PrevOwner}" +
+                                $" | Price: {sortPet.Price}");
+                        }
+                        Console.WriteLine("_______________________________________________________________________________________");
                         break;
                     case 7:
-                        Console.WriteLine("Nope");
+                        Console.WriteLine("Show 5 cheapest pets");
                         break;
                     default:
                         break;
@@ -156,6 +169,50 @@ namespace Easv.PetStore.ConsoleApp
                 Price = 5000.00
             };
             _petService.CreatePet(pet4);
+            var pet5 = new Pet()
+            {
+                Name = "Gunner",
+                Type = "Gås",
+                Birthdate = new DateTime(2018, 08, 08),
+                SoldDate = new DateTime(2019, 09, 09),
+                Color = "Gul",
+                PrevOwner = "Jens",
+                Price = 56454
+            };
+            _petService.CreatePet(pet5);
+            var pet6 = new Pet()
+            {
+                Name = "Bølle",
+                Type = "Kat",
+                Birthdate = new DateTime(2018, 08, 08),
+                SoldDate = new DateTime(2019, 09, 09),
+                Color = "Gul",
+                PrevOwner = "Jens",
+                Price = 987
+            };
+            _petService.CreatePet(pet6);
+            var pet7 = new Pet()
+            {
+                Name = "Ulle",
+                Type = "Fugl",
+                Birthdate = new DateTime(2018, 08, 08),
+                SoldDate = new DateTime(2019, 09, 09),
+                Color = "Gul",
+                PrevOwner = "Jens",
+                Price = 872342.00
+            };
+            _petService.CreatePet(pet7);
+            var pet8 = new Pet()
+            {
+                Name = "Peter",
+                Type = "And",
+                Birthdate = new DateTime(2018, 08, 08),
+                SoldDate = new DateTime(2019, 09, 09),
+                Color = "Gul",
+                PrevOwner = "Jens",
+                Price = 123
+            };
+            _petService.CreatePet(pet8);
         }
 
         int PrintFindPetById()
@@ -172,8 +229,8 @@ namespace Easv.PetStore.ConsoleApp
         string PrintFintPetByType()
         {
             Console.WriteLine("Skriv type på Pet ");
-            string name = Console.ReadLine();
-            return name;
+            string type = Console.ReadLine();            
+            return type;
         }
 
         string AskQuestion(string question)

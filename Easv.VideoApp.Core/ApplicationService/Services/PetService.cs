@@ -56,7 +56,9 @@ namespace Easv.PetStore.Core.ApplicationService.Services
         //Read
         public List<Pet> SortByPrice()
         {
-            throw new NotImplementedException();
+            var list = _petRepo.ReadAll();
+            var query = list.OrderBy(pet => pet.Price);
+            return query.ToList();
         }
         //Read
         public List<Pet> GetFiveCheapest()
