@@ -7,13 +7,14 @@ namespace Easv.PetStore.Infrastructure.Data
 {
     public class FakeDB
     {
-        public static int id = 1;
+        public static int petId = 1;
         public static IEnumerable<Pet> Pets;
 
         public static void InitializeData()
         {
             var pet1 = new Pet()
             {
+                Id = petId++,
                 Name = "Pjuske",
                 Type = "Hund",
                 Birthdate = new DateTime(2018, 08, 08),
@@ -25,6 +26,7 @@ namespace Easv.PetStore.Infrastructure.Data
             };
             var pet2 = new Pet()
             {
+                Id = petId++,
                 Name = "JohnBob",
                 Type = "Kat",
                 Birthdate = new DateTime(2018, 08, 08),
@@ -35,6 +37,7 @@ namespace Easv.PetStore.Infrastructure.Data
             };
             var pet3 = new Pet()
             {
+                Id = petId++,
                 Name = "Ib",
                 Type = "Gås",
                 Birthdate = new DateTime(2018, 08, 08),
@@ -45,6 +48,7 @@ namespace Easv.PetStore.Infrastructure.Data
             };
             var pet4 = new Pet()
             {
+                Id = petId++,
                 Name = "Killer",
                 Type = "Hund",
                 Birthdate = new DateTime(2018, 08, 08),
@@ -55,6 +59,7 @@ namespace Easv.PetStore.Infrastructure.Data
             };
             var pet5 = new Pet()
             {
+                Id = petId++,
                 Name = "Gunner",
                 Type = "Gås",
                 Birthdate = new DateTime(2018, 08, 08),
@@ -65,6 +70,7 @@ namespace Easv.PetStore.Infrastructure.Data
             };
             var pet6 = new Pet()
             {
+                Id = petId++,
                 Name = "Bølle",
                 Type = "Kat",
                 Birthdate = new DateTime(2018, 08, 08),
@@ -75,6 +81,7 @@ namespace Easv.PetStore.Infrastructure.Data
             };
             var pet7 = new Pet()
             {
+                Id = petId++,
                 Name = "Ulle",
                 Type = "Fugl",
                 Birthdate = new DateTime(2018, 08, 08),
@@ -85,6 +92,7 @@ namespace Easv.PetStore.Infrastructure.Data
             };
             var pet8 = new Pet()
             {
+                Id = petId++,
                 Name = "Peter",
                 Type = "And",
                 Birthdate = new DateTime(2018, 08, 08),

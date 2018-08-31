@@ -83,9 +83,14 @@ namespace Easv.PetStore.Core.ApplicationService.Services
             return pet;
         }
         //Delete
-        public Pet DeletePet(int iDForDelete)
+        public void DeletePet(int iDForDelete)
         {
-            return _petRepo.delete(iDForDelete);
+            if (iDForDelete < 1)
+            {
+                throw new InvalidOperationException("Eyy day is not an id on da list!");
+            }
+            _petRepo.delete(iDForDelete);
+            //return _petRepo.delete(iDForDelete);
         }
 
         

@@ -16,12 +16,7 @@ namespace Easv.PetStore.ConsoleApp
 
         public Printer(IPetService petService)
         {
-            _petService = petService;
-            //Infrastructure.Data
-            //Initialise Data - Seed Database
-            StartData();
-            //UI
-             
+            _petService = petService;                       
         }
 
         //UI
@@ -124,8 +119,6 @@ namespace Easv.PetStore.ConsoleApp
                 valg = PetMenu(menuEnhender);
             }
             Console.WriteLine("Farvel");
-
-
             Console.ReadLine();
         }
 
@@ -140,99 +133,6 @@ namespace Easv.PetStore.ConsoleApp
             }
         }
 
-        private void StartData()
-        {
-            var pet1 = new Pet()
-            {
-                Name = "Pjuske",
-                Type = "Hund",
-                Birthdate = new DateTime(2018, 08, 08),
-                SoldDate = new DateTime(2019, 09, 09),
-                Color = "Brun",
-                PrevOwner = "Lars",
-                Price = 2000.00
-
-            };
-            _petService.CreatePet(pet1);
-            var pet2 = new Pet()
-            {
-                Name = "JohnBob",
-                Type = "Kat",
-                Birthdate = new DateTime(2018, 08, 08),
-                SoldDate = new DateTime(2019, 09, 09),
-                Color = "Hvid",
-                PrevOwner = "John",
-                Price = 150.00
-            };
-            _petService.CreatePet(pet2);
-            var pet3 = new Pet()
-            {
-                Name = "Ib",
-                Type = "Gås",
-                Birthdate = new DateTime(2018, 08, 08),
-                SoldDate = new DateTime(2019, 09, 09),
-                Color = "Grå",
-                PrevOwner = "Karl",
-                Price = 350.00
-            };
-            _petService.CreatePet(pet3);
-            var pet4 = new Pet()
-            {
-                Name = "Killer",
-                Type = "Hund",
-                Birthdate = new DateTime(2018, 08, 08),
-                SoldDate = new DateTime(2019, 09, 09),
-                Color = "Gul",
-                PrevOwner = "Jens",
-                Price = 5000.00
-            };
-            _petService.CreatePet(pet4);
-            var pet5 = new Pet()
-            {
-                Name = "Gunner",
-                Type = "Gås",
-                Birthdate = new DateTime(2018, 08, 08),
-                SoldDate = new DateTime(2019, 09, 09),
-                Color = "Gul",
-                PrevOwner = "Jens",
-                Price = 56454
-            };
-            _petService.CreatePet(pet5);
-            var pet6 = new Pet()
-            {
-                Name = "Bølle",
-                Type = "Kat",
-                Birthdate = new DateTime(2018, 08, 08),
-                SoldDate = new DateTime(2019, 09, 09),
-                Color = "Gul",
-                PrevOwner = "Jens",
-                Price = 987
-            };
-            _petService.CreatePet(pet6);
-            var pet7 = new Pet()
-            {
-                Name = "Ulle",
-                Type = "Fugl",
-                Birthdate = new DateTime(2018, 08, 08),
-                SoldDate = new DateTime(2019, 09, 09),
-                Color = "Gul",
-                PrevOwner = "Jens",
-                Price = 872342.00
-            };
-            _petService.CreatePet(pet7);
-            var pet8 = new Pet()
-            {
-                Name = "Peter",
-                Type = "And",
-                Birthdate = new DateTime(2018, 08, 08),
-                SoldDate = new DateTime(2019, 09, 09),
-                Color = "Gul",
-                PrevOwner = "Jens",
-                Price = 123
-            };
-            _petService.CreatePet(pet8);
-        }
-
         int PrintFindPetById()
         {
             Console.WriteLine("Skriv id på Pet ");
@@ -241,7 +141,6 @@ namespace Easv.PetStore.ConsoleApp
             {
                 Console.WriteLine("ID er altid et tal");
             }
-
             return id;
         }
         string PrintFintPetByType()
@@ -285,7 +184,6 @@ namespace Easv.PetStore.ConsoleApp
             }
             Console.WriteLine("Valg: " + valg);
             return valg;
-
         }
     }
 }

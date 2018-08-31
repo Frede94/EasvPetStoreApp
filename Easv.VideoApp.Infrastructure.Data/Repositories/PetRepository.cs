@@ -1,25 +1,25 @@
 ﻿using Easv.PetStore.Core.DomainService;
 using Easv.PetStore.Core.Entity;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Easv.PetStore.Infrastructure.Data.Repositories
 {
 
     public class PetRepository : IPetRepository
     {
-        static int id = 1;
-        private List<Pet> _pets = new List<Pet>();
-
-        public Pet Create(Pet video)
+        public Pet Create(Pet pet)
         {
-            video.Id = id++;
-            _pets.Add(video);
-            return video;
+            pet.Id = FakeDB.petId++;
+            var pets = FakeDB.Pets.ToList();
+            pets.Add(pet);
+            FakeDB.Pets = pets;
+            return pet;
         }
 
         public Pet ReadById(int id)
         {
-            foreach (var pet in _pets)
+            foreach (var pet in FakeDB.Pets)
             {
                 if (pet.Id == id)
                 {
@@ -30,17 +30,9 @@ namespace Easv.PetStore.Infrastructure.Data.Repositories
         }
         public IEnumerable<Pet> ReadAll()
         {
-            return _pets;
+            return FakeDB.Pets;
         }
 
-        //ID: int
-        //Name: string
-        //Type: string or Enum
-        //Birthdate: DateTime
-        //SoldDate: DateTime
-        //Color: string
-        //PreviousOwner: string
-        //Price: double
         public Pet Update(Pet petUpdate)
         {
             var petFraDB = this.ReadById(petUpdate.Id);
@@ -58,16 +50,12 @@ namespace Easv.PetStore.Infrastructure.Data.Repositories
             return null;
         }
 
-        public Pet delete(int id)
+        public void delete(int id)
         {
-            var petFundet = this.ReadById(id);
-
-            if (petFundet != null)
-            {
-                _pets.Remove(petFundet);
-                return petFundet;
-            }
-            return null;
+            var pets = FakeDB.Pets.ToList();
+            var petsToDelete = pets.FirstOrDefault(pet => pet.Id == id);
+            pets.Remove(petsToDelete);
+            FakeDB.Pets = pets;
         }
     }
 }
