@@ -12,7 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Easv.VideoApp.Core.Entity\Easv.PetStore.Core.Entity.csproj" />
     <ProjectReference Include="..\Easv.VideoApp.Core\Easv.PetStore.Core.csproj" />
-    <ProjectReference Include="..\Easv.VideoApp.Infrastructure.Data\Easv.VideoApp.PetStore.Data.csproj" />
+    <ProjectReference Include="..\Easv.VideoApp.Infrastructure.Data\Easv.PetStore.Infrastructure.Data.csproj" />
   </ItemGroup>
 
 </Project>

@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Easv.PetStore.Core", "Easv.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Easv.PetStore.Core.Entity", "Easv.VideoApp.Core.Entity\Easv.PetStore.Core.Entity.csproj", "{58F209CF-DE56-41BA-B079-E660392315CC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Easv.VideoApp.PetStore.Data", "Easv.VideoApp.Infrastructure.Data\Easv.VideoApp.PetStore.Data.csproj", "{857290F5-1313-491A-B488-76095DB3AF71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Easv.PetStore.Infrastructure.Data", "Easv.VideoApp.Infrastructure.Data\Easv.PetStore.Infrastructure.Data.csproj", "{857290F5-1313-491A-B488-76095DB3AF71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
