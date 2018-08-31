@@ -47,7 +47,7 @@ namespace Easv.PetStore.ConsoleApp
                 {
                     case 1:
                         var pets = _petService.GetAllPets();                        
-                        ShowPets(pets);
+                        ShowPets(pets);                        
                         break;
                     case 2:
                         var searchType = PrintFintPetByType();
@@ -56,8 +56,9 @@ namespace Easv.PetStore.ConsoleApp
                         {
                             Console.WriteLine($"Name: {searchPet.Name} | Type: {searchPet.Type} | Birthdate: {searchPet.Birthdate}" +
                                 $" | Solddate: {searchPet.SoldDate} | Color: {searchPet.Color} | Previous owner: {searchPet.PrevOwner}" +
-                                $" | Price: {searchPet.Price}");
+                                $" | Price: {searchPet.Price:N}");
                         }
+                        Console.WriteLine("_______________________________________________________________________________________");
                         break;
                     case 3:
                         var name = AskQuestion("Name: ");
@@ -71,10 +72,12 @@ namespace Easv.PetStore.ConsoleApp
                                             Convert.ToDateTime(soldDate), color,
                                             prevOwner, Convert.ToDouble(price));
                         _petService.CreatePet(pet);
+                        Console.WriteLine("_______________________________________________________________________________________");
                         break;
                     case 4:
                         var iDForDelete = PrintFindPetById();
                         _petService.DeletePet(iDForDelete);
+                        Console.WriteLine("_______________________________________________________________________________________");
                         break;
                     case 5:
                         var idForEdit = PrintFindPetById();
@@ -97,19 +100,23 @@ namespace Easv.PetStore.ConsoleApp
                             PrevOwner = newPrevOwner,
                             Price = Convert.ToDouble(newPrice)
                         });
+                        Console.WriteLine("_______________________________________________________________________________________");
                         break;
-                    case 6:                        
+                    case 6:
+                        Console.WriteLine("Sorting pet by price Cheap -> Expensive: ");
                         var sortResult = _petService.SortByPrice();
                         foreach (var sortPet in sortResult)
-                        {
+                        {                            
                             Console.WriteLine($"Name: {sortPet.Name} | Type: {sortPet.Type} | Birthdate: {sortPet.Birthdate}" +
                                 $" | Solddate: {sortPet.SoldDate} | Color: {sortPet.Color} | Previous owner: {sortPet.PrevOwner}" +
-                                $" | Price: {sortPet.Price}");
+                                $" | Price: {sortPet.Price:N}");
                         }
                         Console.WriteLine("_______________________________________________________________________________________");
                         break;
                     case 7:
-                        Console.WriteLine("Show 5 cheapest pets");
+                        Console.WriteLine("Showing 5 cheapest pets");
+                        ShowCheapestPets();
+                        Console.WriteLine("_______________________________________________________________________________________");
                         break;
                     default:
                         break;
@@ -120,6 +127,17 @@ namespace Easv.PetStore.ConsoleApp
 
 
             Console.ReadLine();
+        }
+
+        private void ShowCheapestPets()
+        {
+            var list = _petService.GetFiveCheapest();
+            foreach (var pet in list)
+            {
+                Console.WriteLine($"Name: {pet.Name} | Type: {pet.Type} | Birthdate: {pet.Birthdate}" +
+                                $" | Solddate: {pet.SoldDate} | Color: {pet.Color} | Previous owner: {pet.PrevOwner}" +
+                                $" | Price: {pet.Price:N}");
+            }
         }
 
         private void StartData()
@@ -246,7 +264,7 @@ namespace Easv.PetStore.ConsoleApp
             {
                 Console.WriteLine($"Id: {pet.Id} | Navn: {pet.Name} | Type: {pet.Type} " +
                     $"| Birthdate: {pet.Birthdate} | Solddate: {pet.SoldDate}" +
-                    $" | Color: {pet.Color} | Previous Owner: {pet.PrevOwner} | Price: {pet.Price}");
+                    $" | Color: {pet.Color} | Previous Owner: {pet.PrevOwner} | Price: {pet.Price:N}");
             }
             Console.WriteLine("____________________________________________________________________________");
             Console.WriteLine("\n");
