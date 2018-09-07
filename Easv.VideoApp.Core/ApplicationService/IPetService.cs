@@ -23,6 +23,6 @@ namespace Easv.PetStore.Core.ApplicationService
         //Update
         Pet UpdatePet(Pet petUpdate);
         //Delete
-        void DeletePet(int iDForDelete);
+        Pet DeletePet(int iDForDelete);
     }
 }

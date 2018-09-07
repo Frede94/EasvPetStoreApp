@@ -13,6 +13,6 @@ namespace Easv.PetStore.Core.DomainService
 
         Pet Update(Pet petUpdate);
 
-        void delete(int id);
+        Pet delete(int id);
     }
 }

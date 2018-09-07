@@ -50,12 +50,13 @@ namespace Easv.PetStore.Infrastructure.Data.Repositories
             return null;
         }
 
-        public void delete(int id)
+        public Pet delete(int id)
         {
             var pets = FakeDB.Pets.ToList();
             var petsToDelete = pets.FirstOrDefault(pet => pet.Id == id);
             pets.Remove(petsToDelete);
             FakeDB.Pets = pets;
+            return petsToDelete;
         }
     }
 }

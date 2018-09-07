@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Easv.VideoApp.Console\Easv.PetStore.ConsoleApp.csproj" />
+    <ProjectReference Include="..\Easv.VideoApp.Core.Entity\Easv.PetStore.Core.Entity.csproj" />
+    <ProjectReference Include="..\Easv.VideoApp.Core\Easv.PetStore.Core.csproj" />
+    <ProjectReference Include="..\Easv.VideoApp.Infrastructure.Data\Easv.PetStore.Infrastructure.Data.csproj" />
+  </ItemGroup>
+
+</Project>
