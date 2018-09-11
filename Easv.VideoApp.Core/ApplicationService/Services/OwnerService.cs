@@ -6,5 +6,12 @@ namespace Easv.PetStore.Core.ApplicationService.Services
 {
     class OwnerService
     {
+        //Create
+
+        //Read
+
+        //Update
+
+        //Delete
     }
 }

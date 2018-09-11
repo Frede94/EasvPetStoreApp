@@ -29,5 +29,7 @@ namespace Easv.PetStore.Core.Entity
         public string PrevOwner { get; set; }
 
         public double Price { get; set; }
+
+        public Owner PetOwner { get; set; }
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Easv.PetStore.Core.Entity
 {
-    class Owner
+    public class Owner
     {
         public int OwnerId { get; set; }
 
@@ -13,6 +13,8 @@ namespace Easv.PetStore.Core.Entity
         public string Last_name { get; set; }
 
         public string Adress { get; set; }
+
+        public List<Pet> Pets { get; set; }
 
     }
 }
