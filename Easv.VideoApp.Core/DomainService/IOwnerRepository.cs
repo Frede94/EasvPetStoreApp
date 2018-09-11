@@ -1,18 +1,20 @@
-﻿using System;
+﻿using Easv.PetStore.Core.Entity;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Easv.PetStore.Core.DomainService
 {
-    interface IOwnerRepository
+    public interface IOwnerRepository
     {
-        //Create
+        Owner Create(Owner owner);
 
-        //Read
+        Owner ReadById(int id);
 
-        //Update
+        IEnumerable<Owner> ReadAll();
 
-        //Delete
+        Owner Update(Owner ownerUpdate);
 
+        Owner delete(int id);
     }
 }

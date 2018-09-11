@@ -10,6 +10,9 @@ namespace Easv.PetStore.Infrastructure.Data
         public static int petId = 1;
         public static IEnumerable<Pet> Pets;
 
+        public static int ownerId = 1;
+        public static IEnumerable<Owner> Owners;
+
         public static void InitializeData()
         {
             var pet1 = new Pet()
@@ -102,6 +105,44 @@ namespace Easv.PetStore.Infrastructure.Data
                 Price = 123
             };
             Pets = new List<Pet> { pet1, pet2, pet3, pet4, pet5, pet6, pet7, pet8 };
+
+            var owner1 = new Owner()
+            {
+                OwnerId = ownerId++,
+                First_name = "Johny",
+                Last_name = "Bravo",
+                Adress = "Hus 5",
+                Pets = new Pet()
+                {
+                    Id = pet2.Id,
+                    Name = pet2.Name,
+                    Type = pet2.Type,
+                    Birthdate = pet2.Birthdate,
+                    SoldDate = pet2.SoldDate,
+                    Color = pet2.Color,
+                    PrevOwner = pet1.PrevOwner,
+                    Price = pet2.Price
+                }
+            };
+            var owner2 = new Owner()
+            {
+                OwnerId = ownerId++,
+                First_name = "Karl",
+                Last_name = "Nabo",
+                Adress = "Hus 8",
+                Pets = new Pet()
+                {
+                    Id = pet1.Id,
+                    Name = pet1.Name,
+                    Type = pet1.Type,
+                    Birthdate = pet1.Birthdate,
+                    SoldDate = pet1.SoldDate,
+                    Color = pet1.Color,
+                    PrevOwner = pet1.PrevOwner,
+                    Price = pet1.Price
+                }
+            };
+            Owners = new List<Owner> { owner1, owner2 };
         }
 
     }

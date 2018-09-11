@@ -35,6 +35,9 @@ namespace Easv.PetStore.ResAPI
             services.AddScoped<IPetRepository, PetRepository>();
             services.AddScoped<IPrinter, Printer>();
 
+            services.AddScoped<IOwnerService, OwnerService>();
+            services.AddScoped<IOwnerRepository, OwnerRepository>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
