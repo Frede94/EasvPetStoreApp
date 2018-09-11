@@ -30,6 +30,10 @@ namespace Easv.PetStore.ResAPI.Controllers
         [HttpGet("{id}", Name = "Get")]
         public ActionResult<Owner> Get(int id)
         {
+            if (id <= 0)
+            {
+                return BadRequest("Id skal være mere en 0");
+            }
             return _ownerService.FindOwnerById(id);
         }
 
