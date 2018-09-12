@@ -9,10 +9,12 @@ namespace Easv.PetStore.Core.ApplicationService.Services
 {
     public class PetService : IPetService
     {
+        readonly IOwnerService _ownerRepo;
         readonly IPetRepository _petRepo;
 
-        public PetService(IPetRepository petRepository)
+        public PetService(IPetRepository petRepository, IOwnerService ownerService)
         {
+            _ownerRepo = ownerService;
             _petRepo = petRepository;
         }
 
@@ -38,12 +40,20 @@ namespace Easv.PetStore.Core.ApplicationService.Services
         //Read
         public List<Pet> GetAllPets()
         {
+            //var list = _petRepo.ReadAll().ToList();
+            //foreach (var pet in list)
+            //{
+            //    pet.PetOwner = _ownerRepo.FindOwnerById(pet.Id);
+            //}
             return _petRepo.ReadAll().ToList();
         }
         //Read
         public Pet FindPetById(int id)
         {
-            return _petRepo.ReadById(id);
+            var pet = _petRepo.ReadById(id);
+            pet.PetOwner = _ownerRepo.FindOwnerById(pet.PetOwner.OwnerId);
+            return pet;
+            //return _petRepo.ReadById(id);
         }
         //Read
         public List<Pet> FindPetByType(string searchValue)

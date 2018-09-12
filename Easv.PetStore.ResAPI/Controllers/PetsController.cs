@@ -29,7 +29,7 @@ namespace Easv.PetStore.ResAPI.Controllers
         [HttpGet("{id}")]
         public ActionResult<Pet> Get(int id)
         {
-            if (id <= 1)
+            if (id <= 0)
             {
                 return BadRequest("Id skal være over 0");
             }

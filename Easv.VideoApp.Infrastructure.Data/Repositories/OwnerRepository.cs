@@ -43,7 +43,7 @@ namespace Easv.PetStore.Infrastructure.Data.Repositories
                 ownerFraDB.First_name = ownerUpdate.First_name;
                 ownerFraDB.Last_name = ownerUpdate.Last_name;
                 ownerFraDB.Adress = ownerUpdate.Adress;
-                ownerFraDB.Pets = ownerUpdate.Pets;
+                //ownerFraDB.Pets = ownerUpdate.Pets;
                 return ownerFraDB;
             }
             return null;

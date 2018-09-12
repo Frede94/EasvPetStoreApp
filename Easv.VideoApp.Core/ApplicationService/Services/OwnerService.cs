@@ -22,10 +22,10 @@ namespace Easv.PetStore.Core.ApplicationService.Services
             {
                 First_name = first_name,
                 Last_name = last_name,
-                Pets = new Pet
-                {
-                    //Something...
-                },
+                //Pets = new Pet
+                //{
+                //    //Something...
+                //},
                 Adress = address
             };
             return owner;
@@ -66,7 +66,7 @@ namespace Easv.PetStore.Core.ApplicationService.Services
             owner.First_name = ownerUpdate.First_name;
             owner.Last_name = ownerUpdate.Last_name;
             owner.Adress = ownerUpdate.Adress;
-            owner.Pets = ownerUpdate.Pets;
+            //owner.Pets = ownerUpdate.Pets;
 
             return owner;
         }

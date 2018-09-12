@@ -24,7 +24,11 @@ namespace Easv.PetStore.Infrastructure.Data
                 SoldDate = new DateTime(2019, 09, 09),
                 Color = "Brun",
                 PrevOwner = "Lars",
-                Price = 2000.00
+                Price = 2000.00,
+                PetOwner = new Owner
+                {
+                    OwnerId = 1
+                }
 
             };
             var pet2 = new Pet()
@@ -36,7 +40,11 @@ namespace Easv.PetStore.Infrastructure.Data
                 SoldDate = new DateTime(2019, 09, 09),
                 Color = "Hvid",
                 PrevOwner = "John",
-                Price = 150.00
+                Price = 150.00,
+                PetOwner = new Owner
+                {
+                    OwnerId = 2
+                }
             };
             var pet3 = new Pet()
             {
@@ -47,7 +55,11 @@ namespace Easv.PetStore.Infrastructure.Data
                 SoldDate = new DateTime(2019, 09, 09),
                 Color = "Grå",
                 PrevOwner = "Karl",
-                Price = 350.00
+                Price = 350.00,
+                PetOwner = new Owner
+                {
+                    OwnerId = 1
+                }
             };
             var pet4 = new Pet()
             {
@@ -58,7 +70,11 @@ namespace Easv.PetStore.Infrastructure.Data
                 SoldDate = new DateTime(2019, 09, 09),
                 Color = "Gul",
                 PrevOwner = "Jens",
-                Price = 5000.00
+                Price = 5000.00,
+                PetOwner = new Owner
+                {
+                    OwnerId = 2
+                }
             };
             var pet5 = new Pet()
             {
@@ -69,7 +85,11 @@ namespace Easv.PetStore.Infrastructure.Data
                 SoldDate = new DateTime(2019, 09, 09),
                 Color = "Gul",
                 PrevOwner = "Jens",
-                Price = 56454
+                Price = 56454,
+                PetOwner = new Owner
+                {
+                    OwnerId = 2
+                }
             };
             var pet6 = new Pet()
             {
@@ -80,7 +100,11 @@ namespace Easv.PetStore.Infrastructure.Data
                 SoldDate = new DateTime(2019, 09, 09),
                 Color = "Gul",
                 PrevOwner = "Jens",
-                Price = 987
+                Price = 987,
+                PetOwner = new Owner
+                {
+                    OwnerId = 2
+                }
             };
             var pet7 = new Pet()
             {
@@ -91,7 +115,11 @@ namespace Easv.PetStore.Infrastructure.Data
                 SoldDate = new DateTime(2019, 09, 09),
                 Color = "Gul",
                 PrevOwner = "Jens",
-                Price = 872342.00
+                Price = 872342.00,
+                PetOwner = new Owner
+                {
+                    OwnerId = 1
+                }
             };
             var pet8 = new Pet()
             {
@@ -102,7 +130,11 @@ namespace Easv.PetStore.Infrastructure.Data
                 SoldDate = new DateTime(2019, 09, 09),
                 Color = "Gul",
                 PrevOwner = "Jens",
-                Price = 123
+                Price = 123,
+                PetOwner = new Owner
+                {
+                    OwnerId = 2
+                }
             };
             Pets = new List<Pet> { pet1, pet2, pet3, pet4, pet5, pet6, pet7, pet8 };
 
@@ -112,17 +144,6 @@ namespace Easv.PetStore.Infrastructure.Data
                 First_name = "Johny",
                 Last_name = "Bravo",
                 Adress = "Hus 5",
-                Pets = new Pet()
-                {
-                    Id = pet2.Id,
-                    Name = pet2.Name,
-                    Type = pet2.Type,
-                    Birthdate = pet2.Birthdate,
-                    SoldDate = pet2.SoldDate,
-                    Color = pet2.Color,
-                    PrevOwner = pet1.PrevOwner,
-                    Price = pet2.Price
-                }
             };
             var owner2 = new Owner()
             {
@@ -130,17 +151,6 @@ namespace Easv.PetStore.Infrastructure.Data
                 First_name = "Karl",
                 Last_name = "Nabo",
                 Adress = "Hus 8",
-                Pets = new Pet()
-                {
-                    Id = pet1.Id,
-                    Name = pet1.Name,
-                    Type = pet1.Type,
-                    Birthdate = pet1.Birthdate,
-                    SoldDate = pet1.SoldDate,
-                    Color = pet1.Color,
-                    PrevOwner = pet1.PrevOwner,
-                    Price = pet1.Price
-                }
             };
             Owners = new List<Owner> { owner1, owner2 };
         }
