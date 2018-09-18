@@ -35,7 +35,10 @@ namespace Easv.PetStore.Infrastructure.Data.Repositories
 
         public Pet Update(Pet petUpdate)
         {
-            throw new NotImplementedException();
+            var pUpdate = _PSActx.Update(petUpdate).Entity;
+            var change = _PSActx.ChangeTracker.Entries();
+            _PSActx.SaveChanges();
+            return pUpdate;
         }
 
         public Pet delete(int id)

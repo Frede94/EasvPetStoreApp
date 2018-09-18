@@ -58,8 +58,10 @@ namespace Easv.PetStore.ResAPI
                 using (var scope = app.ApplicationServices.CreateScope())
                 {
                     var ctx = scope.ServiceProvider.GetService<PetStoreAppContext>();
-                    ctx.Database.EnsureDeleted();
-                    ctx.Database.EnsureCreated();
+                    //ctx.Database.EnsureDeleted();
+                    //ctx.Database.EnsureCreated();
+
+                    DBInitializer.SeedDB(ctx);
                 }
             }
             else

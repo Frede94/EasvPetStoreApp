@@ -35,7 +35,10 @@ namespace Easv.PetStore.Infrastructure.Data.Repositories
 
         public Owner Update(Owner ownerUpdate)
         {
-            throw new NotImplementedException();
+            var oUpdate = _PSActx.Update(ownerUpdate).Entity;
+            var change = _PSActx.ChangeTracker.Entries();
+            _PSActx.SaveChanges();
+            return oUpdate;
         }
 
         public Owner delete(int id)
