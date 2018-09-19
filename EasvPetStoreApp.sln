@@ -15,11 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Easv.PetStore.Core", "Easv.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Easv.PetStore.Core.Entity", "Easv.VideoApp.Core.Entity\Easv.PetStore.Core.Entity.csproj", "{58F209CF-DE56-41BA-B079-E660392315CC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Easv.PetStore.Infrastructure.Static.Data", "Easv.VideoApp.Infrastructure.Data\Easv.PetStore.Infrastructure.Static.Data.csproj", "{857290F5-1313-491A-B488-76095DB3AF71}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Easv.PetStore.ResAPI", "Easv.PetStore.ResAPI\Easv.PetStore.ResAPI.csproj", "{39DAC3AE-BC4D-4F88-ADBC-74D666C2BC1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Easv.PetStore.Infrastructure.Data", "Easv.PetStore.Infrastructure.Data\Easv.PetStore.Infrastructure.Data.csproj", "{6EDB33C3-F6EC-4263-B8F6-3A6245CFFEDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Easv.PetStore.Infrastructure.Data", "Easv.PetStore.Infrastructure.Data\Easv.PetStore.Infrastructure.Data.csproj", "{6EDB33C3-F6EC-4263-B8F6-3A6245CFFEDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +37,6 @@ Global
 		{58F209CF-DE56-41BA-B079-E660392315CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58F209CF-DE56-41BA-B079-E660392315CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58F209CF-DE56-41BA-B079-E660392315CC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{857290F5-1313-491A-B488-76095DB3AF71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{857290F5-1313-491A-B488-76095DB3AF71}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{857290F5-1313-491A-B488-76095DB3AF71}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{857290F5-1313-491A-B488-76095DB3AF71}.Release|Any CPU.Build.0 = Release|Any CPU
 		{39DAC3AE-BC4D-4F88-ADBC-74D666C2BC1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{39DAC3AE-BC4D-4F88-ADBC-74D666C2BC1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39DAC3AE-BC4D-4F88-ADBC-74D666C2BC1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -59,7 +53,6 @@ Global
 		{1EFF4C3D-0697-41AF-AFE5-87593733474E} = {CA3B91F5-F25E-424D-9D93-3B1B2AEB26BD}
 		{48F9FD4A-C403-4F97-AE90-A88B5DF08835} = {3D399473-E862-42FD-AA1C-8D0C2CFE6A03}
 		{58F209CF-DE56-41BA-B079-E660392315CC} = {3D399473-E862-42FD-AA1C-8D0C2CFE6A03}
-		{857290F5-1313-491A-B488-76095DB3AF71} = {1EABA7D9-5C10-46E7-A6BB-7757CBFCAD23}
 		{39DAC3AE-BC4D-4F88-ADBC-74D666C2BC1F} = {CA3B91F5-F25E-424D-9D93-3B1B2AEB26BD}
 		{6EDB33C3-F6EC-4263-B8F6-3A6245CFFEDC} = {1EABA7D9-5C10-46E7-A6BB-7757CBFCAD23}
 	EndGlobalSection

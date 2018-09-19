@@ -47,7 +47,10 @@ namespace Easv.PetStore.Infrastructure.Data.Repositories
 
         public Owner delete(int id)
         {
-            throw new NotImplementedException();
+            var ownersRemoved = _PSActx
+                .Remove(new Owner { OwnerId = id }).Entity;
+            _PSActx.SaveChanges();
+            return ownersRemoved;
         }
 
     }
