@@ -1,5 +1,6 @@
 ﻿using Easv.PetStore.Core.DomainService;
 using Easv.PetStore.Core.Entity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,10 @@ namespace Easv.PetStore.Infrastructure.Data.Repositories
 
         public Owner ReadById(int id)
         {
-            return _PSActx.Owners.FirstOrDefault(o => o.OwnerId == id);
+            return _PSActx.Owners
+                .Include(o => o.Pets)
+                .FirstOrDefault(o => o.OwnerId == id);
+            //return _PSActx.Owners.FirstOrDefault(o => o.OwnerId == id);
         }
 
         public Owner Update(Owner ownerUpdate)

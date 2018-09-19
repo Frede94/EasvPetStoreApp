@@ -11,6 +11,17 @@ namespace Easv.PetStore.Infrastructure.Data
         public PetStoreAppContext(DbContextOptions<PetStoreAppContext> opt )
            : base(opt){ }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Pet>()
+                .HasOne(p => p.PetOwner)
+                .WithMany(o => o.Pets)
+                .OnDelete(DeleteBehavior.SetNull);
+
+                //.HasMany(p => p.PetOwner)
+                //.WithOne(o => o.Pet);
+        }
+
         public DbSet<Pet> Pets { get; set; }
 
         public DbSet<Owner> Owners { get; set; }

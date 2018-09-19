@@ -16,7 +16,7 @@ namespace Easv.PetStore.Core.Entity
 
         //public Pet Pets { get; set; }
 
-        //public List<Pet> Pets { get; set; }
+        public List<Pet> Pets { get; set; }
 
     }
 }

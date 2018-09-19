@@ -1,5 +1,6 @@
 ﻿using Easv.PetStore.Core.DomainService;
 using Easv.PetStore.Core.Entity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,11 @@ namespace Easv.PetStore.Infrastructure.Data.Repositories
          
         public Pet Create(Pet pet)
         {
+            if(pet.PetOwner != null)
+            {
+                pet.PetOwner = _PSActx.Owners.FirstOrDefault
+                    (o => o.OwnerId == pet.PetOwner.OwnerId);
+            }
             var p = _PSActx.Pets.Add(pet).Entity;
             _PSActx.SaveChanges();
             return p;
@@ -30,7 +36,18 @@ namespace Easv.PetStore.Infrastructure.Data.Repositories
 
         public Pet ReadById(int id)
         {
-            return _PSActx.Pets.FirstOrDefault(p => p.Id == id);
+            return _PSActx.Pets
+                .Include(p => p.PetOwner)
+                .FirstOrDefault(p => p.Id == id);
+            //return _PSActx.Pets.FirstOrDefault(p => p.Id == id);
+        }
+
+        public Pet ReadByIdIncludeOwner(int id)
+        {
+            return _PSActx.Pets
+                .Include(p => p.PetOwner)
+                .FirstOrDefault(p => p.Id == id);
+            //return _PSActx.Pets.FirstOrDefault(p => p.Id == id);
         }
 
         public Pet Update(Pet petUpdate)
@@ -43,7 +60,13 @@ namespace Easv.PetStore.Infrastructure.Data.Repositories
 
         public Pet delete(int id)
         {
-            throw new NotImplementedException();
-        }
+            //var ownersToRemove = _PSActx.Pets
+            //    .Where(p => p.PetOwner.OwnerId == id);
+            //_PSActx.RemoveRange(ownersToRemove);
+            var petsRemoved = _PSActx
+                .Remove(new Pet { Id = id }).Entity;
+            _PSActx.SaveChanges();
+            return petsRemoved;
+        }        
     }
 }

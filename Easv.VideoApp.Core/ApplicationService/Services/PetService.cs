@@ -51,7 +51,7 @@ namespace Easv.PetStore.Core.ApplicationService.Services
         public Pet FindPetById(int id)
         {
             var pet = _petRepo.ReadById(id);
-            pet.PetOwner = _ownerRepo.FindOwnerById(pet.PetOwner.OwnerId);
+            //pet.PetOwner = _ownerRepo.FindOwnerById(pet.PetOwner.OwnerId);
             return pet;
             //return _petRepo.ReadById(id);
         }
