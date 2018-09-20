@@ -1,7 +1,5 @@
 ﻿using Easv.PetStore.Core.ApplicationService;
-using Easv.PetStore.Core.DomainService;
 using Easv.PetStore.Core.Entity;
-using Easv.PetStore.Infrastructure.Data.Repositories;
 using System;
 using System.Collections.Generic;
 
