@@ -69,6 +69,7 @@ namespace Easv.PetStore.ResAPI
                 app.UseHsts();
             }
 
+            app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
