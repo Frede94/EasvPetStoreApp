@@ -11,7 +11,7 @@ namespace Easv.PetStore.Core.DomainService
 
         Owner ReadById(int id);
 
-        IEnumerable<Owner> ReadAll();
+        IEnumerable<Owner> ReadAll(Filter filter = null);
 
         Owner Update(Owner ownerUpdate);
 

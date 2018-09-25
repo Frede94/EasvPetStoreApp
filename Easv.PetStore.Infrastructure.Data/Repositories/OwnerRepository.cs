@@ -24,9 +24,13 @@ namespace Easv.PetStore.Infrastructure.Data.Repositories
             return o;
         }
 
-        public IEnumerable<Owner> ReadAll()
+        public IEnumerable<Owner> ReadAll(Filter filter)
         {
-            return _PSActx.Owners;
+            if (filter == null)
+            {
+                return _PSActx.Owners;
+            }
+            return _PSActx.Owners.Skip((filter.CurrentPage - 1) * filter.ItemsPrPage).Take(filter.ItemsPrPage);
         }
 
         public Owner ReadById(int id)
@@ -39,10 +43,14 @@ namespace Easv.PetStore.Infrastructure.Data.Repositories
 
         public Owner Update(Owner ownerUpdate)
         {
-            var oUpdate = _PSActx.Update(ownerUpdate).Entity;
-            var change = _PSActx.ChangeTracker.Entries();
+
+            //var oUpdate = _PSActx.Update(ownerUpdate).Entity;
+            //var change = _PSActx.ChangeTracker.Entries();
+            //_PSActx.Attach(oUpdate).State = EntityState.Added;
+            //return oUpdate;
+            _PSActx.Attach(ownerUpdate).State = EntityState.Modified;
             _PSActx.SaveChanges();
-            return oUpdate;
+            return ownerUpdate;
         }
 
         public Owner delete(int id)

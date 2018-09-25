@@ -9,10 +9,11 @@ namespace Easv.PetStore.Core.DomainService
 
         Pet ReadById(int id);
 
-        IEnumerable<Pet> ReadAll();
+        IEnumerable<Pet> ReadAll(Filter filter = null);
 
         Pet Update(Pet petUpdate);
 
         Pet delete(int id);
+        int Count();
     }
 }

@@ -15,9 +15,11 @@ namespace Easv.PetStore.Core.ApplicationService
         List<Owner> FindOwnerByName(string searchValue);
         List<Owner> SortOwnerByNumberOfPets();
         List<Owner> GetAllOwners();
+        List<Owner> GetFilteredOwners(Filter filter);
         //Update
         Owner UpdateOwner(Owner ownerUpdate);
         //Delete
         Owner Delete(int IdForDelete);
+        
     }
 }

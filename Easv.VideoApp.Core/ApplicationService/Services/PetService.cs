@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Easv.PetStore.Core.DomainService;
@@ -47,6 +48,18 @@ namespace Easv.PetStore.Core.ApplicationService.Services
             //}
             return _petRepo.ReadAll().ToList();
         }
+        public List<Pet> GetFilteredPets(Filter filter)
+        {
+            if (filter.CurrentPage < 0 || filter.ItemsPrPage <0)
+            {
+                throw new InvalidDataException("CurrentP & ItemPrP must be 0 or above");
+            }
+            if ((filter.CurrentPage -1 * filter.ItemsPrPage) >= _petRepo.Count())
+            {
+                throw new InvalidDataException("Index out of bounds");
+            }
+            return _petRepo.ReadAll(filter).ToList();
+        }
         //Read
         public Pet FindPetById(int id)
         {
@@ -80,17 +93,7 @@ namespace Easv.PetStore.Core.ApplicationService.Services
         //update
         public Pet UpdatePet(Pet petUpdate)
         {
-            var pet = FindPetById(petUpdate.Id);
-
-            pet.Name = petUpdate.Name;
-            pet.Type = petUpdate.Type;
-            pet.Birthdate = petUpdate.Birthdate;
-            pet.SoldDate = petUpdate.SoldDate;
-            pet.Color = petUpdate.Color;
-            pet.PrevOwner = petUpdate.PrevOwner;
-            pet.Price = petUpdate.Price;
-
-            return pet;
+            return _petRepo.Update(petUpdate);
         }
         //Delete
         public Pet DeletePet(int iDForDelete)
@@ -101,8 +104,6 @@ namespace Easv.PetStore.Core.ApplicationService.Services
             }
             return _petRepo.delete(iDForDelete);
             //return _petRepo.delete(iDForDelete);
-        }
-
-        
+        }        
     }
 }

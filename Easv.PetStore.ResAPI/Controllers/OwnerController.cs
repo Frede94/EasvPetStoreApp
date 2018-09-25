@@ -21,9 +21,10 @@ namespace Easv.PetStore.ResAPI.Controllers
         }
         // GET: api/Owner
         [HttpGet]
-        public ActionResult<IEnumerable<Owner>> Get()
+        public ActionResult<IEnumerable<Owner>> Get([FromQuery]Filter filter)
         {
-            return _ownerService.GetAllOwners();
+            return Ok(_ownerService.GetFilteredOwners(filter));
+            //return _ownerService.GetAllOwners();
         }
 
         // GET: api/Owner/5

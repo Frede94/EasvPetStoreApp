@@ -20,9 +20,17 @@ namespace Easv.PetStore.ResAPI.Controllers
         }
     // GET api/values
     [HttpGet]
-        public ActionResult<IEnumerable<Pet>> Get()
+        public ActionResult<IEnumerable<Pet>> Get([FromQuery] Filter filter)
         {
-            return _petService.GetAllPets();
+            try
+            {
+                return Ok(_petService.GetFilteredPets(filter));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }            
+            //return Ok(_petService.GetAllPets());
         }
 
         // GET api/values/5
@@ -33,7 +41,7 @@ namespace Easv.PetStore.ResAPI.Controllers
             {
                 return BadRequest("Id skal være over 0");
             }
-            return _petService.FindPetById(id);
+            return Ok(_petService.FindPetById(id));
         }
 
         // POST api/values

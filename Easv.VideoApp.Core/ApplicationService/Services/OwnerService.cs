@@ -54,6 +54,11 @@ namespace Easv.PetStore.Core.ApplicationService.Services
             return _ownerRepo.ReadAll().ToList();
         }
 
+        public List<Owner> GetFilteredOwners(Filter filter)
+        {
+            return _ownerRepo.ReadAll(filter).ToList();
+        }
+
         public List<Owner> SortOwnerByNumberOfPets()
         {
             throw new NotImplementedException();
@@ -61,14 +66,14 @@ namespace Easv.PetStore.Core.ApplicationService.Services
 
         public Owner UpdateOwner(Owner ownerUpdate)
         {
-            var owner = FindOwnerById(ownerUpdate.OwnerId);
+            //var owner = FindOwnerById(ownerUpdate.OwnerId);
 
-            owner.First_name = ownerUpdate.First_name;
-            owner.Last_name = ownerUpdate.Last_name;
-            owner.Adress = ownerUpdate.Adress;
-            //owner.Pets = ownerUpdate.Pets;
+            //owner.First_name = ownerUpdate.First_name;
+            //owner.Last_name = ownerUpdate.Last_name;
+            //owner.Adress = ownerUpdate.Adress;
+            ////owner.Pets = ownerUpdate.Pets;
 
-            return owner;
+            return _ownerRepo.Update(ownerUpdate);
         }
 
         public Owner Delete(int IdForDelete)

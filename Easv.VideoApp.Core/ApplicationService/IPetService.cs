@@ -20,9 +20,11 @@ namespace Easv.PetStore.Core.ApplicationService
         List<Pet> GetFiveCheapest();
 
         List<Pet> GetAllPets();
+        List<Pet> GetFilteredPets(Filter filter);
         //Update
         Pet UpdatePet(Pet petUpdate);
         //Delete
         Pet DeletePet(int iDForDelete);
+        
     }
 }
