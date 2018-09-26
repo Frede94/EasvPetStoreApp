@@ -48,7 +48,7 @@ namespace Easv.PetStore.ResAPI
             if (_env.IsDevelopment())
             {
                 services.AddDbContext<PetStoreAppContext>(
-                    opt => opt.UseSqlite("Data Source=customerApp.db"));
+                    opt => opt.UseSqlite("Data Source=petStoreapp.db"));
             }
             else if (_env.IsProduction())
             {
@@ -57,11 +57,10 @@ namespace Easv.PetStore.ResAPI
                         .UseSqlServer(_conf.GetConnectionString("DefaultConnection")));
             }
 
-            services.AddDbContext<PetStoreAppContext>(opt => opt.UseSqlite("Data Source=petstoreApp"));
+            //services.AddDbContext<PetStoreAppContext>(opt => opt.UseSqlite("Data Source=petstoreApp"));
 
             services.AddScoped<IPetService, PetService>();
-            services.AddScoped<IPetRepository, PetRepository>();
-            //services.AddScoped<IPrinter, Printer>();
+            services.AddScoped<IPetRepository, PetRepository>();            
 
             services.AddScoped<IOwnerService, OwnerService>();
             services.AddScoped<IOwnerRepository, OwnerRepository>();
@@ -84,9 +83,6 @@ namespace Easv.PetStore.ResAPI
                 using (var scope = app.ApplicationServices.CreateScope())
                 {
                     var ctx = scope.ServiceProvider.GetService<PetStoreAppContext>();
-                    //ctx.Database.EnsureDeleted();
-                    //ctx.Database.EnsureCreated();
-
                     DBInitializer.SeedDB(ctx);
                 }
             }
