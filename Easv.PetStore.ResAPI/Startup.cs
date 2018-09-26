@@ -90,13 +90,15 @@ namespace Easv.PetStore.ResAPI
                     DBInitializer.SeedDB(ctx);
                 }
             }
-            using (var scope = app.ApplicationServices.CreateScope())
-            {
-                var ctx = scope.ServiceProvider.GetService<PetStoreAppContext>();
-                ctx.Database.EnsureCreated();
+            else
+            { 
+                using (var scope = app.ApplicationServices.CreateScope())
+                {
+                    var ctx = scope.ServiceProvider.GetService<PetStoreAppContext>();
+                    ctx.Database.EnsureCreated();
+                }
+                app.UseHsts();
             }
-            app.UseHsts();
-
             //app.UseHttpsRedirection();
             app.UseMvc();
         }
