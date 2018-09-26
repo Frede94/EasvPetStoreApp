@@ -20,17 +20,43 @@ namespace Easv.PetStore.ResAPI
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        //public Startup(IConfiguration configuration)
+        //{
+        //    Configuration = configuration;
+        //    //FakeDB.InitializeData();
+        //}
+
+        private IConfiguration _conf { get; }
+
+        private IHostingEnvironment _env { get; set; }
+
+        public Startup(IHostingEnvironment env)
         {
-            Configuration = configuration;
-            //FakeDB.InitializeData();
+            _env = env;
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+            _conf = builder.Build();
         }
 
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            if (_env.IsDevelopment())
+            {
+                services.AddDbContext<PetStoreAppContext>(
+                    opt => opt.UseSqlite("Data Source=customerApp.db"));
+            }
+            else if (_env.IsProduction())
+            {
+                services.AddDbContext<PetStoreAppContext>(
+                    opt => opt
+                        .UseSqlServer(_conf.GetConnectionString("DefaultConnection")));
+            }
+
             services.AddDbContext<PetStoreAppContext>(opt => opt.UseSqlite("Data Source=petstoreApp"));
 
             services.AddScoped<IPetService, PetService>();
