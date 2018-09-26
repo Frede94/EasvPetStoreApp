@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Easv.PetStore.Core.ApplicationService;
+﻿using Easv.PetStore.Core.ApplicationService;
 using Easv.PetStore.Core.ApplicationService.Services;
 using Easv.PetStore.Core.DomainService;
 using Easv.PetStore.Infrastructure.Data;
@@ -13,8 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace Easv.PetStore.ResAPI
 {
