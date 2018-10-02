@@ -39,6 +39,9 @@ namespace Easv.PetStore.ResAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Add CORS
+            services.AddCors();
+
             if (_env.IsDevelopment())
             {
                 services.AddDbContext<PetStoreAppContext>(
@@ -89,6 +92,9 @@ namespace Easv.PetStore.ResAPI
                 }
                 app.UseHsts();
             }
+
+            //Enable CORS(før MVC)
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod());
             //app.UseHttpsRedirection();
             app.UseMvc();
         }

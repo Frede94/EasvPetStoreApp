@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Collections.Generic;
 
 namespace Easv.PetStore.Core.Entity
 {
@@ -31,5 +32,7 @@ namespace Easv.PetStore.Core.Entity
         public double Price { get; set; }
 
         public Owner PetOwner { get; set; }
+
+        public List<Color> Colors { get; set; }
     }
 }

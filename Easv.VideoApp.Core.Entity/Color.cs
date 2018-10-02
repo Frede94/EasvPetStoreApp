@@ -9,5 +9,7 @@ namespace Easv.PetStore.Core.Entity
         public int ColorId { get; set; }
 
         public string Color_Name { get; set; }
+
+        public List<Pet> Pets { get; set; }
     }
 }
