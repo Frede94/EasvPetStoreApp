@@ -24,13 +24,19 @@ namespace Easv.PetStore.ResAPI.Controllers
         {
             try
             {
-                return Ok(_petService.GetFilteredPets(filter));
+                if (filter.CurrentPage != 0 && filter.ItemsPrPage != 0)
+                {
+                    return Ok(_petService.GetFilteredPets(filter));
+                }
+                else
+                {
+                    return Ok(_petService.GetAllPets());
+                }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e.Message);
-            }            
-            //return Ok(_petService.GetAllPets());
+                return BadRequest(ex.Message);
+            }                                   
         }
 
         // GET api/values/5

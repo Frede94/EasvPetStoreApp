@@ -33,6 +33,6 @@ namespace Easv.PetStore.Core.Entity
 
         public Owner PetOwner { get; set; }
 
-        public List<Color> Colors { get; set; }
+        //public List<Color> Colors { get; set; }
     }
 }
