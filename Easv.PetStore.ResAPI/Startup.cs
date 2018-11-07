@@ -94,7 +94,7 @@ namespace Easv.PetStore.ResAPI
             }
 
             //Enable CORS(før MVC)
-            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod());
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             //app.UseHttpsRedirection();
             app.UseMvc();
         }
