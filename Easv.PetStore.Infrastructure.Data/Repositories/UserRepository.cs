@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Easv.PetStore.Infrastructure.Data.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : IUserRepository<User>
     {
         private readonly PetStoreAppContext _PSActx;
 
@@ -16,12 +16,13 @@ namespace Easv.PetStore.Infrastructure.Data.Repositories
         {
             _PSActx = petStoreAppContext;
         }
+
         //Create
-        public User Add(User user)
+        public void Add(User user)
         {
             var u = _PSActx.Users.Add(user).Entity;
             _PSActx.SaveChanges();
-            return u;
+            //return u;
         }
         //Read
         public User Get(long id)
@@ -34,19 +35,19 @@ namespace Easv.PetStore.Infrastructure.Data.Repositories
             return _PSActx.Users.ToList();
         }
         //Update
-        public User Edit(User user)
+        public void Edit(User user)
         {
             _PSActx.Entry(user).State = EntityState.Modified;
             _PSActx.SaveChanges();
-            return user;
+            //return user;
         }        
         //Delete
-        public User Remove(long id)
+        public void Remove(long id)
         {
             var item = _PSActx.Users.FirstOrDefault(u => u.Id == id);
             _PSActx.Users.Remove(item);
             _PSActx.SaveChanges();
-            return item;
+            //return item;
 
         }
     }
