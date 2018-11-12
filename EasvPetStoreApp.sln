@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Easv.PetStore.ResAPI", "Eas
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Easv.PetStore.Infrastructure.Data", "Easv.PetStore.Infrastructure.Data\Easv.PetStore.Infrastructure.Data.csproj", "{6EDB33C3-F6EC-4263-B8F6-3A6245CFFEDC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Helpers", "Helpers", "{06FC2744-38E6-4189-B118-58FAADAF2EE2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

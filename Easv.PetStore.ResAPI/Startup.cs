@@ -1,14 +1,18 @@
 ﻿using Easv.PetStore.Core.ApplicationService;
 using Easv.PetStore.Core.ApplicationService.Services;
 using Easv.PetStore.Core.DomainService;
+using Easv.PetStore.Core.Entity;
 using Easv.PetStore.Infrastructure.Data;
 using Easv.PetStore.Infrastructure.Data.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using System;
 
 namespace Easv.PetStore.ResAPI
 {
@@ -33,12 +37,25 @@ namespace Easv.PetStore.ResAPI
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             _conf = builder.Build();
+            JwtSecurityKey.SetSecret("A secret that needs to be atleast 16 characters long");
         }
 
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateAudience = false,
+                    ValidateIssuer = false,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = JwtSecurityKey.Key,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.FromMinutes(5)
+                };
+            });
             //Add CORS
             services.AddCors();
 
@@ -61,6 +78,8 @@ namespace Easv.PetStore.ResAPI
 
             services.AddScoped<IOwnerService, OwnerService>();
             services.AddScoped<IOwnerRepository, OwnerRepository>();
+
+            services.AddScoped<IUserRepository<User>, UserRepository>();
 
             services.AddMvc().AddJsonOptions(
                 options => {
@@ -95,6 +114,8 @@ namespace Easv.PetStore.ResAPI
 
             //Enable CORS(før MVC)
             app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
+            app.UseAuthentication();
             //app.UseHttpsRedirection();
             app.UseMvc();
         }
