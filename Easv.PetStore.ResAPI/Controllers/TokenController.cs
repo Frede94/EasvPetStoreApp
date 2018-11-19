@@ -81,8 +81,8 @@ namespace Easv.PetStore.ResAPI.Controllers
                 new JwtPayload(null, // issuer - not needed (ValidateIssuer = false)
                                null, // audience - not needed (ValidateAudience = false)
                                claims.ToArray(),
-                               DateTime.Now,               // notBefore
-                               //DateTime.Now.AddMinutes(1000)));  // expires
+                               DateTime.Now,             // notBefore
+                               DateTime.Now.AddMinutes(1000000)));  // expires
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
