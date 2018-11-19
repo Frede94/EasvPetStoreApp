@@ -9,8 +9,8 @@ namespace Easv.PetStore.Core.DomainService
     {
         IEnumerable<User> GetAll();
         User Get(long id);
-        void Add(User user);
-        void Edit(User user);
-        void Remove(long id);
+        User Add(User user);
+        User Edit(User user);
+        User Remove(long id);
     }
 }

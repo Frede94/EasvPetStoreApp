@@ -18,11 +18,11 @@ namespace Easv.PetStore.Infrastructure.Data.Repositories
         }
 
         //Create
-        public void Add(User user)
+        public User Add(User user)
         {
             var u = _PSActx.Users.Add(user).Entity;
             _PSActx.SaveChanges();
-            //return u;
+            return u;
         }
         //Read
         public User Get(long id)
@@ -35,19 +35,19 @@ namespace Easv.PetStore.Infrastructure.Data.Repositories
             return _PSActx.Users.ToList();
         }
         //Update
-        public void Edit(User user)
+        public User Edit(User user)
         {
             _PSActx.Entry(user).State = EntityState.Modified;
             _PSActx.SaveChanges();
-            //return user;
+            return user;
         }        
         //Delete
-        public void Remove(long id)
+        public User Remove(long id)
         {
             var item = _PSActx.Users.FirstOrDefault(u => u.Id == id);
             _PSActx.Users.Remove(item);
             _PSActx.SaveChanges();
-            //return item;
+            return item;
 
         }
     }
