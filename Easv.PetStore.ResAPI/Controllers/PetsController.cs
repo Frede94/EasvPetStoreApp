@@ -43,7 +43,7 @@ namespace Easv.PetStore.ResAPI.Controllers
         }
 
         // GET api/values/5
-        //[Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator")]
         [HttpGet("{id}")]
         public ActionResult<Pet> Get(int id)
         {
