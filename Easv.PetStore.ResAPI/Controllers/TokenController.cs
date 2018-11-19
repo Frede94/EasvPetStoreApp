@@ -82,7 +82,7 @@ namespace Easv.PetStore.ResAPI.Controllers
                                null, // audience - not needed (ValidateAudience = false)
                                claims.ToArray(),
                                DateTime.Now,               // notBefore
-                               DateTime.Now.AddMinutes(10)));  // expires
+                               //DateTime.Now.AddMinutes(1000)));  // expires
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
