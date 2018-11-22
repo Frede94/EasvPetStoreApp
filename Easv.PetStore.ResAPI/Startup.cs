@@ -68,7 +68,7 @@ namespace Easv.PetStore.ResAPI
             {
                 services.AddDbContext<PetStoreAppContext>(
                     opt => opt
-                        .UseSqlServer(_conf.GetConnectionString("DefaultConnection")));
+                        .UseSqlServer(_conf.GetConnectionString("defaultConnection")));
             }
 
             //services.AddDbContext<PetStoreAppContext>(opt => opt.UseSqlite("Data Source=petstoreApp"));
